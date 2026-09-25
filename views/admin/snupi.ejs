@@ -75,8 +75,6 @@
               Descripcion
             </label>
 
-            <input type="hidden" name="" id="snupiId">
-
             <input
               type="text"
               id="descripcion"
@@ -94,8 +92,6 @@
             <label for="name" class="form-label">
               Es Infaltable?
             </label>
-
-            <input type="hidden" name="" id="snupiId">
 
             <input
               type="text"
@@ -274,12 +270,15 @@
 </div> </main>
 
 <script>
-    let snupiRows = document.getElementById("snupi").children[1].children.length;
+    let snupiRows = document.getElementById("snupis").children[1].children.length;
 
     function limpiar(event){
       event.preventDefault();
-      document.getElementById("snupiID").value="";
+      document.getElementById("snupiId").value="";
       document.getElementById("nombre").value="";
+      document.getElementById("categoria").value="";
+      document.getElementById("descripcion").value="";
+      document.getElementById("esInfaltable").value="";
       document.getElementById("cardTitle").innerHTML = "Nuevo Snupi";
     }
 
@@ -291,7 +290,7 @@
         let descripcion = document.getElementById("descripcion").value;
         let esInfaltable = document.getElementById("esInfaltable").value;
         let snupiTable = document.getElementById("snupis");
-        let snupiID = document.getElementById("snupiID").value;
+        let snupiId = document.getElementById("snupiId").value;
 
         if(snupiId==""){
           let tr = document.createElement("TR");
@@ -300,6 +299,7 @@
           let td3 = document.createElement("TD");
           let td4 = document.createElement("TD");
           let td5 = document.createElement("TD");
+          let td6 = document.createElement("TD");
 
           snupiRows = snupiRows + 1;
           td1.innerHTML = snupiRows;
@@ -313,6 +313,7 @@
           tr.appendChild(td3);
           tr.appendChild(td4);
           tr.appendChild(td5);
+          tr.appendChild(td6);
 
           console.log(tr);
 
@@ -329,8 +330,9 @@
               tr.children[2].innerHTML = categoria;
               tr.children[3].innerHTML = descripcion;
               tr.children[4].innerHTML = esInfaltable;
-              document.getElementById("snupiID").value="";
+              document.getElementById("snupiId").value="";
               document.getElementById("nombre").value="";
+              document.getElementById("categoria").value="";
               document.getElementById("descripcion").value="";
               document.getElementById("esInfaltable").value="";
               document.getElementById("cardTitle").innerHTML = "Nuevo Snupi";
